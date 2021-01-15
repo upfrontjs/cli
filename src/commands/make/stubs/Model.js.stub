@@ -1,0 +1,26 @@
+import { Model } from '{{PACKAGE_NAME}}';
+
+export default class {{NAME}} extends Model {
+    /**
+     * The basic endpoint that model queries.
+     *
+     * @type {string}
+     *
+     * @protected
+     */
+    get endpoint() {
+        return '{{NAME_PLURAL_LOWER}}';
+    }
+
+    /**
+     * Set attribute guarding for the model.
+     *
+     * @return {{guarded?: string[], fillable?: string[]}}
+     *
+     * @protected
+     */
+    initialise() {
+        return {};
+    }
+    {{FACTORY}}
+}

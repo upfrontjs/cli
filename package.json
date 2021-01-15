@@ -1,0 +1,53 @@
+{
+    "name": "@upfront/cli",
+    "version": "0.1.0",
+    "description": "upfront-cli",
+    "files": [
+        "index.js",
+        "stubs",
+        "man"
+    ],
+    "man": "./man/upfront.1",
+    "scripts": {
+        "build": "rollup -c",
+        "watch": "npm run build -- -w"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/nandi95/upfront-cli.git"
+    },
+    "bin": {
+        "upfront": "./cli.js"
+    },
+    "directories": {
+        "lib": "./",
+        "man": "./man"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/nandi95/upfront-cli/issues"
+    },
+    "homepage": "https://github.com/nandi95/upfront-cli#readme",
+    "dependencies": {
+        "@upfront/cli": "file:upfront-cli-0.1.0.tgz",
+        "chalk": "^4.1.0",
+        "minimist": "^1.2.5",
+        "pluralize": "^8.0.0"
+    },
+    "devDependencies": {
+        "@rollup/plugin-node-resolve": "^11.0.1",
+        "@rollup/plugin-typescript": "^8.1.0",
+        "@types/inquirer": "^7.3.1",
+        "@types/minimist": "^1.2.1",
+        "@types/pluralize": "^0.0.29",
+        "@typescript-eslint/eslint-plugin": "^4.11.0",
+        "@typescript-eslint/parser": "^4.11.0",
+        "eslint": "^7.16.0",
+        "eslint-plugin-import": "^2.22.1",
+        "rollup": "^2.36.1",
+        "rollup-plugin-copy": "^3.3.0",
+        "tslib": "^2.0.1"
+    }
+}

@@ -1,0 +1,36 @@
+{
+    "compilerOptions": {
+        "module": "ESNext",
+        "outDir": "lib",
+        "rootDir": ".",
+        "preserveConstEnums": false,
+        "sourceMap": true,
+        "downlevelIteration": true,
+        "isolatedModules": true,
+        "esModuleInterop": true,
+        "importHelpers": true,
+        "lib": [
+            "ESNext"
+        ],
+        "target": "ESNext",
+        "incremental": false,
+        "noEmitOnError": true,
+        "resolveJsonModule": true,
+        "moduleResolution": "node",
+        "removeComments": false,
+        "pretty": true,
+        "noImplicitReturns": true,
+        "allowSyntheticDefaultImports": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "forceConsistentCasingInFileNames": true,
+        "noUncheckedIndexedAccess": true,
+        "strict": true,
+        "noFallthroughCasesInSwitch": true,
+        "allowUnreachableCode": false
+    },
+    "include": [
+        "src/**/*.ts"
+    ],
+    "$schema": "https://json.schemastore.org/tsconfig"
+}

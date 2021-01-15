@@ -1,0 +1,15 @@
+import { Factory } from '{{PACKAGE_NAME}}';
+
+export default class {{NAME}}Factory extends Factory {
+    /**
+     * Define the model's default attributes.
+     *
+     * @param {{{NAME}}} {{NAME_LOWER}} - an empty instance of the target model.
+     * @param {number} index - the index of the current loop.
+     *
+     * @return {object}
+     */
+    public definition({{NAME_LOWER}}, index) {
+        return {};
+    }
+}
