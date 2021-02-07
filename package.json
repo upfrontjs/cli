@@ -1,7 +1,7 @@
 {
-    "name": "@upfront/cli",
+    "name": "@upfrontjs/cli",
     "version": "0.1.0",
-    "description": "upfront-cli",
+    "description": "Command line helper for the upfront framework.",
     "files": [
         "index.js",
         "stubs",
@@ -14,7 +14,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/nandi95/upfront-cli.git"
+        "url": "git+https://github.com/upfrontjs/cli.git"
     },
     "bin": {
         "upfront": "./cli.js"
@@ -31,10 +31,10 @@
     },
     "homepage": "https://github.com/nandi95/upfront-cli#readme",
     "dependencies": {
-        "@upfront/cli": "file:upfront-cli-0.1.0.tgz",
         "chalk": "^4.1.0",
         "minimist": "^1.2.5",
-        "pluralize": "^8.0.0"
+        "pluralize": "^8.0.0",
+        "semver": "^7.3.4"
     },
     "devDependencies": {
         "@rollup/plugin-node-resolve": "^11.0.1",
@@ -42,6 +42,7 @@
         "@types/inquirer": "^7.3.1",
         "@types/minimist": "^1.2.1",
         "@types/pluralize": "^0.0.29",
+        "@types/semver": "^7.3.4",
         "@typescript-eslint/eslint-plugin": "^4.11.0",
         "@typescript-eslint/parser": "^4.11.0",
         "eslint": "^7.16.0",

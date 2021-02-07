@@ -1,8 +1,9 @@
 import type { ParsedArgs as MParsedArgs } from 'minimist';
 
+export const supportedVersions = ['^0.1.0'];
 export const availableCommands = ['help', 'make'] as const;
 export const upfront = {
-    folder: '@upfront',
+    folder: '@upfrontjs',
     packages: {
         cli: 'cli',
         framework: 'framework'
