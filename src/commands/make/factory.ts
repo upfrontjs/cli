@@ -1,5 +1,5 @@
 import { finish, ucFirst } from '../../helpers/string';
-import { upfront } from '../../constants';
+import { upfrontJs } from '../../constants';
 import fs from 'fs';
 import path from 'path';
 import chalk from 'chalk';
@@ -13,6 +13,8 @@ export default function (name: string, extension: 'ts' | 'js', factoriesDir: str
         console.warn(chalk.yellow(
             'Factory named \'' + name + 'Factory.' + extension + '\' already exists at: ' + factoriesDir)
         );
+
+        return path.resolve(__dirname + path.sep + factoriesDir + name + 'Factory.' + extension);
     }
 
     const filePath = touch(factoriesDir + name + 'Factory.' + extension);
@@ -20,7 +22,7 @@ export default function (name: string, extension: 'ts' | 'js', factoriesDir: str
 
     data = data.replaceAll('{{NAME}}', name)
         .replaceAll('{{NAME_LOWER}}', name.toLowerCase())
-        .replaceAll('{{PACKAGE_NAME}}', upfront.folder + path.sep + upfront.packages.framework);
+        .replaceAll('{{PACKAGE_NAME}}', upfrontJs.folder + path.sep + upfrontJs.packages.framework);
 
     fs.writeFileSync(filePath, data, 'utf8');
     console.log(chalk.green(name + 'Factory.' + extension + ' created.'));

@@ -6,23 +6,11 @@ import makeDoc from './makeDoc';
 export function getHelp(args?: ParsedArgs): void {
     let command: Command;
 
-    // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
-    console.log('command - ' + args?.command);
     if (!args?.command
         || args.command === 'help'
-        // @ts-expect-error
-        || !availableCommands.includes(args.command)
+        || !availableCommands.includes(args.command as Command)
     ) {
         command = 'help';
-        // command = inquirer.prompt([
-        //     {
-        //         type: 'list',
-        //         name: 'command',
-        //         message: 'Need help with:',
-        //         choices: availableCommands.filter(cmd => cmd !== 'help'),
-        //         default: availableCommands[0]
-        //     }
-        // ]);
     } else {
         command = args.command as Command;
     }

@@ -9,7 +9,7 @@ export default class {{NAME}}Factory extends Factory {
      *
      * @return {object}
      */
-    public definition({{NAME_LOWER}}, index) {
+    definition({{NAME_LOWER}}, index) {
         return {};
     }
 }

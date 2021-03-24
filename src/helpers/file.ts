@@ -10,13 +10,13 @@ const cwd = finish(process.cwd(), path.sep);
  * @param {string} fileName
  */
 export function touch(fileName: string): string {
-    const filePath = cwd + fileName;
+    const filePath = path.resolve(cwd + fileName);
 
     if (path.dirname(fileName) !== '.') {
         fs.mkdirSync(path.dirname(fileName), { recursive: true });
     }
 
-    fs.closeSync(fs.openSync(path.basename(filePath), 'a'));
+    fs.writeFileSync(filePath, '', { flag: 'w' });
 
     return filePath;
 }

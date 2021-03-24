@@ -18,11 +18,11 @@ export default function (name: string, doc: Documentation): string {
     if (doc.options) {
         documentation += '    ' + chalk.bold.underline('Options') + '\n';
 
-        Object.keys(doc.options).forEach(optionUsage => {
+        // todo - make this into a table for easier scanning
+        doc.options.forEach(option => {
             documentation += '       '
-                + optionUsage
-                // @ts-expect-error
-                + (doc.options[optionUsage] ? ' => ' + String(doc.options[optionUsage]) : '')
+                + option.argument + ' => ' + option.description
+                + (option.default ? ' Default: ' + option.default : '')
                 + '\n';
         });
     }

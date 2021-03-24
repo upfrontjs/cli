@@ -3,7 +3,7 @@ import fs from 'fs';
 import chalk from 'chalk';
 import { touch } from '../../helpers/file';
 import path from 'path';
-import { upfront } from '../../constants';
+import { upfrontJs } from '../../constants';
 import { plural } from 'pluralize';
 
 
@@ -21,6 +21,8 @@ export default function (
         console.warn(chalk.yellow(
             'Model named \'' + name + '.' + extension + '\' already exists at: ' + modelsDir)
         );
+
+        return path.resolve(__dirname + path.sep + modelsDir + name + '.' + extension);
     }
 
     const filePath = touch(modelsDir + name + '.' + extension);
@@ -33,7 +35,7 @@ export default function (
 
         if (extension === 'ts') {
             data = 'import type Factory from \''
-                + upfront.folder + path.sep + upfront.packages.framework
+                + upfrontJs.folder + path.sep + upfrontJs.packages.framework
                 + '\';\n' + data;
         }
 
@@ -44,7 +46,7 @@ export default function (
 
     data = data.replaceAll('{{NAME}}', name)
         .replaceAll('{{NAME_PLURAL_LOWER}}', plural(name.toLowerCase()))
-        .replaceAll('{{PACKAGE_NAME}}', upfront.folder + path.sep + upfront.packages.framework);
+        .replaceAll('{{PACKAGE_NAME}}', upfrontJs.folder + path.sep + upfrontJs.packages.framework);
 
     fs.writeFileSync(filePath, data, 'utf8');
     console.log(chalk.green(name + '.' + extension + ' created.'));
@@ -53,7 +55,7 @@ export default function (
 }
 
 function getFactoryMethodLiteral(type: 'ts' | 'js') {
-    return '\n     /**\n' +
+    return '\n    /**\n' +
         '     * The factory for the {{NAME}} model.\n' +
         '     *\n' +
         '     * @return {{{NAME}}Factory}\n' +

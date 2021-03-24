@@ -13,14 +13,12 @@ export default class {{NAME}} extends Model {
     }
 
     /**
-     * Set attribute guarding for the model.
+     * The attributes that are mass assignable.
      *
-     * @return {{guarded?: string[], fillable?: string[]}}
-     *
-     * @protected
+     * @type {string[]}
      */
-    protected initialise(): { guarded?: string[]; fillable?: string[] } {
-        return {};
+    public get fillable(): string[] {
+        return [];
     }
     {{FACTORY}}
 }

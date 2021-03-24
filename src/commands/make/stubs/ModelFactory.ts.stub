@@ -1,4 +1,5 @@
-import { Factory, Attributes } from '{{PACKAGE_NAME}}';
+import { Factory } from '{{PACKAGE_NAME}}';
+import type { Attributes } from '{{PACKAGE_NAME}}';
 import {{NAME}} from '../Models/{{NAME}}';
 
 export default class {{NAME}}Factory extends Factory<{{NAME}}> {

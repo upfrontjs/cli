@@ -3,7 +3,6 @@
         "module": "ESNext",
         "outDir": "lib",
         "rootDir": ".",
-        "preserveConstEnums": false,
         "sourceMap": true,
         "downlevelIteration": true,
         "isolatedModules": true,
