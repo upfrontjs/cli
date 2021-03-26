@@ -1,6 +1,6 @@
 import type { ParsedArgs as MParsedArgs } from 'minimist';
 
-export const supportedVersions = ['^0.1.0'];
+export const supportedVersions = ['^0.x'];
 export const availableCommands = ['help', 'make'] as const;
 export const upfrontJs = {
     folder: '@upfrontjs',
@@ -45,7 +45,7 @@ export const documentation = {
             {
                 argument: '--factoryDir=',
                 description: 'The relative path to the factory directory.',
-                default: '\'./factories\''
+                default: '\'./tests/factories\''
             }
         ],
         examples: [
@@ -55,7 +55,7 @@ export const documentation = {
     },
 
     help: {
-        synopsis: 'Command line utility for the upfrontjs package.',
+        synopsis: 'Command line utility for the ' + upfrontJs.folder + '/' + upfrontJs.packages.framework + ' package.',
         options: [
             { argument: 'make', description: 'Generate the required modules in your project.' }
         ],

@@ -66,6 +66,7 @@ module.exports = {
         "@typescript-eslint/consistent-type-imports": ["error", { prefer: 'type-imports' }],
         "@typescript-eslint/member-delimiter-style": "warn",
         "@typescript-eslint/type-annotation-spacing": "warn",
-        "@typescript-eslint/naming-convention": "error"
+        "@typescript-eslint/naming-convention": "error",
+        "@typescript-eslint/no-non-null-assertion": "off"
     }
 }

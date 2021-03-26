@@ -1,41 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access */
 import minimist from 'minimist';
 import { getHelp, printHelp } from './commands/help';
-import delegateMakeCommand from './commands/make';
+import make from './commands/make';
 import chalk from 'chalk';
 import type { Command, ParsedArgs } from './constants';
 import { availableCommands } from './constants';
-// import { upfront, supportedVersions } from './constants';
-// import { Range } from 'semver';
-//
-// const userPkg: { dependencies: Record<string, string> }= require(process.cwd() + '/package.json');
-//
-// userPkg.dependencies[upfront.folder + '/' + upfront.packages.framework] = '^0.2.0';
-
-// if (!userPkg.dependencies || !userPkg.dependencies[upfront.folder + '/' + upfront.packages.framework]) {
-//     console.log(chalk.bold.red(
-//         'Upfront cli requires '
-//         + upfront.folder + '/' + upfront.packages.framework
-//         + ' to be present in your dependencies.'
-//     ));
-//     console.log(chalk.bold.red('Please run the following to install it:'));
-//     console.log(chalk.yellowBright('npm install ' + upfront.folder + '/' + upfront.packages.framework));
-//     process.exit(1);
-// }
-
-// eslint-disable-next-line @typescript-eslint/no-unsafe-call
-// const frameworkVersion = new Range(
-//     userPkg.dependencies[upfront.folder + '/' + upfront.packages.framework] as string
-// );
-//
-// if (!supportedVersions.some(supportedVersion => frameworkVersion.intersects(new Range(supportedVersion)))) {
-//     console.log(chalk.bold.red(
-//         'An unsupported version detected. ensure one of the following is installed instead of: '
-//         + String(frameworkVersion.raw)
-//     ));
-//     supportedVersions.forEach(supportedVersion => console.log(supportedVersion));
-//     process.exit(1);
-// }
+import { supportedVersions } from './constants';
+import { getFrameworkVersion, isSupportedVersion } from './helpers/version';
 
 const args = minimist(process.argv.slice(2), {
     boolean: true,
@@ -44,16 +15,30 @@ const args = minimist(process.argv.slice(2), {
         factory: 'f',
         model: 'm',
         help: 'h',
-        typescript: 't'
+        typescript: 't',
+        skipCheck: 's'
     },
     default: {
         modelDir: './src/Models',
-        factoryDir: './factories',
+        factoryDir: './tests/factories',
         typescript: false,
         factory: false,
-        model: false
+        model: false,
+        skipCheck: false
     }
 }) as ParsedArgs;
+
+if (!args.skipCheck) {
+    const ver = getFrameworkVersion();
+
+    if (!isSupportedVersion(ver)) {
+        console.log(chalk.bold.red(
+            'Unsupported version detected. Ensure one of the following is installed instead of ' + ver
+        ));
+        supportedVersions.forEach(supportedVersion => console.log(supportedVersion));
+        process.exit(1);
+    }
+}
 
 args.command = String(args._.shift()).toLowerCase();
 
@@ -67,8 +52,7 @@ if (args.command?.includes(':')) {
 
 if (!args.command
     || args.command === 'help'
-    // @ts-expect-error
-    || availableCommands.indexOf(args.command) === -1
+    || availableCommands.indexOf(args.command as Command) === -1
     || args.help
 ) {
     if (args.help || args.command === 'help') {
@@ -82,7 +66,7 @@ if (!args.command
 
 switch (args.command) {
     case 'make':
-        delegateMakeCommand(args);
+        make(args);
         break;
 }
 
