@@ -1,4 +1,3 @@
-// import inquirer from 'inquirer';
 import type { Command, ParsedArgs } from '../../constants';
 import { availableCommands, documentation } from '../../constants';
 import makeDoc from './makeDoc';

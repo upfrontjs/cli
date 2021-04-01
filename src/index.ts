@@ -28,18 +28,6 @@ const args = minimist(process.argv.slice(2), {
     }
 }) as ParsedArgs;
 
-if (!args.skipCheck) {
-    const ver = getFrameworkVersion();
-
-    if (!isSupportedVersion(ver)) {
-        console.log(chalk.bold.red(
-            'Unsupported version detected. Ensure one of the following is installed instead of ' + ver
-        ));
-        supportedVersions.forEach(supportedVersion => console.log(supportedVersion));
-        process.exit(1);
-    }
-}
-
 args.command = String(args._.shift()).toLowerCase();
 
 if (args.command?.includes(':')) {
@@ -60,6 +48,18 @@ if (!args.command
         process.exit(0);
     } else {
         printHelp('help');
+        process.exit(1);
+    }
+}
+
+if (!args.skipCheck) {
+    const ver = getFrameworkVersion();
+
+    if (!isSupportedVersion(ver)) {
+        console.log(chalk.bold.red(
+            'Unsupported version detected. Ensure one of the following is installed instead of ' + ver
+        ));
+        supportedVersions.forEach(supportedVersion => console.log(supportedVersion));
         process.exit(1);
     }
 }

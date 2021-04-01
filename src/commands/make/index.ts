@@ -23,8 +23,8 @@ export default function (args: ParsedArgs): void {
             moduleName,
             extension,
             String(args.modelDir),
-            moduleToMake === 'factory' || args.factory,
-            String(args.factoryDir)
+            String(args.factoryDir),
+            moduleToMake === 'factory' || args.factory
         );
     }
 
@@ -32,6 +32,7 @@ export default function (args: ParsedArgs): void {
         makeFactory(
             moduleName,
             extension,
+            String(args.modelDir),
             String(args.factoryDir)
         );
     }

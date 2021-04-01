@@ -60,7 +60,7 @@ export const documentation = {
             { argument: 'make', description: 'Generate the required modules in your project.' }
         ],
         examples: [
-            '- upfront make:[model|factory]'
+            '- upfront make:(model|factory)'
         ]
     }
 } as Record<Command, Documentation>;

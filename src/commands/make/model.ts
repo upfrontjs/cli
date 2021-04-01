@@ -6,13 +6,12 @@ import path from 'path';
 import { upfrontJs } from '../../constants';
 import { plural } from 'pluralize';
 
-
 export default function (
     name: string,
     extension: 'ts' | 'js',
     modelsDir: string,
-    withFactory: boolean,
-    factoriesRelativeDir: string
+    factoriesRelativeDir: string,
+    withFactory: boolean
 ): string {
     name = ucFirst(name);
     modelsDir = finish(modelsDir, path.sep);
@@ -29,8 +28,13 @@ export default function (
     let data = fs.readFileSync(path.resolve(__dirname + '/stubs/Model.' + extension + '.stub'), 'utf-8');
 
     if (withFactory) {
+        const relativeFactoryPath = path.relative(
+            process.cwd() + path.sep + modelsDir,
+            process.cwd() + path.sep + factoriesRelativeDir
+        );
+
         data = 'import ' + name + 'Factory from \''
-            + finish(factoriesRelativeDir, path.sep) + name + 'Factory\';\n'
+            + finish(relativeFactoryPath, path.sep) + name + 'Factory\';\n'
             + data;
 
         if (extension === 'ts') {
