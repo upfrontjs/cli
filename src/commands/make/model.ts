@@ -3,12 +3,13 @@ import fs from 'fs';
 import chalk from 'chalk';
 import { touch } from '../../helpers/file';
 import path from 'path';
+import type { Extension } from '../../constants';
 import { upfrontJs } from '../../constants';
 import { plural } from 'pluralize';
 
 export default function (
     name: string,
-    extension: 'ts' | 'js',
+    extension: Extension,
     modelsDir: string,
     factoriesRelativeDir: string,
     withFactory: boolean
@@ -58,7 +59,7 @@ export default function (
     return filePath;
 }
 
-function getFactoryMethodLiteral(type: 'ts' | 'js') {
+function getFactoryMethodLiteral(type: Extension) {
     return '\n    /**\n' +
         '     * The factory for the {{NAME}} model.\n' +
         '     *\n' +

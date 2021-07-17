@@ -12,6 +12,7 @@ export const upfrontJs = {
 
 export type Command = typeof availableCommands[number];
 export type ParsedArgs = MParsedArgs & { command: Command | string | undefined };
+export type Extension = 'ts' | 'js';
 
 interface Option {
     argument: string;
@@ -38,6 +39,10 @@ export const documentation = {
                 description: 'Flag indicating to generate typescript files instead of javascript files.'
             },
             {
+                argument: '--skipCheck -s',
+                description: 'Flag indicating to skip preliminary check of the installed framework.'
+            },
+            {
                 argument: '--modelDir=',
                 description: 'The relative path of the models directory.',
                 default: '\'./src/Models\''
@@ -49,8 +54,8 @@ export const documentation = {
             }
         ],
         examples: [
-            '- upfront make:model User -ft',
-            '- upfront make:factory Shift'
+            '- upfrontjs make:model User -ft',
+            '- upfrontjs make:factory Shift'
         ]
     },
 

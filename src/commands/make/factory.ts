@@ -1,4 +1,5 @@
 import { finish, ucFirst } from '../../helpers/string';
+import type { Extension } from '../../constants';
 import { upfrontJs } from '../../constants';
 import fs from 'fs';
 import path from 'path';
@@ -7,7 +8,7 @@ import { touch } from '../../helpers/file';
 
 export default function (
     name: string,
-    extension: 'ts' | 'js',
+    extension: Extension,
     modelDir: string,
     factoriesDir: string
 ): string {

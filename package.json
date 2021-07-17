@@ -3,7 +3,7 @@
     "version": "0.1.0",
     "description": "Command line helper for the upfront framework.",
     "files": [
-        "index.js",
+        "cli.js",
         "stubs",
         "man"
     ],
@@ -17,13 +17,18 @@
         "url": "git+https://github.com/upfrontjs/cli.git"
     },
     "bin": {
-        "upfront": "./cli.js"
+        "upfrontjs": "./cli.js"
     },
     "directories": {
         "lib": "./",
         "man": "./man"
     },
-    "keywords": [],
+    "keywords": [
+        "upfrontjs",
+        "cli",
+        "generate",
+        "make"
+    ],
     "author": "",
     "license": "MIT",
     "bugs": {
@@ -39,7 +44,6 @@
     "devDependencies": {
         "@rollup/plugin-node-resolve": "^11.0.1",
         "@rollup/plugin-typescript": "^8.1.0",
-        "@types/inquirer": "^7.3.1",
         "@types/minimist": "^1.2.1",
         "@types/pluralize": "^0.0.29",
         "@types/semver": "^7.3.4",
