@@ -37,7 +37,7 @@
     "homepage": "https://github.com/nandi95/upfront-cli#readme",
     "dependencies": {
         "chalk": "^4.1.0",
-        "minimist": "^1.2.5",
+        "minimist": "^1.2.6",
         "pluralize": "^8.0.0",
         "semver": "^7.3.4"
     },
